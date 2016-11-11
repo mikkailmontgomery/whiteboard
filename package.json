@@ -1,0 +1,25 @@
+{
+  "name": "whiteboard",
+  "version": "1.0.0",
+  "description": "A simple html5 multi-user whiteboard.",
+  "main": "whiteboard.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node whiteboard.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mikkailmontgomery/whiteboard.git"
+  },
+  "keywords": [
+    "whiteboard",
+    "collab",
+    "team"
+  ],
+  "author": "Mikkail Montgomery",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mikkailmontgomery/whiteboard/issues"
+  },
+  "homepage": "https://github.com/mikkailmontgomery/whiteboard#readme"
+}
