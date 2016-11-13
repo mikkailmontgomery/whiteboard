@@ -8,8 +8,9 @@
     "start": "node whiteboard.js"
   },
   "dependencies": {
-    "socket.io": "1.5.1",
-    "hat":"0.0.3"
+    "express": "^4.10.2",
+    "hat": "0.0.3",
+    "socket.io": "1.5.1"
   },
   "repository": {
     "type": "git",

@@ -1,35 +1,40 @@
 <html>
 <head><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-  <script src="http://127.0.0.1:8080/socket.io/socket.io.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
   <script>
-    var socket = io('http://localhost:8080');
+    var socket = io();
   </script>
 </head>
 <body>
 <canvas id="canvas" width="600px" height="600px" style="border-style: solid;"></canvas>
 <script>
 context = document.getElementById('canvas').getContext("2d");
-$('#canvas').mousedown(function(e){
+$('#canvas').on({ 'mouseleave touchcancel' : function(e){
+  event.preventDefault();
+  paint = false;
+} });
+$('#canvas').on({ 'mousedown touchstart' : function(e){
+  event.preventDefault();
   var mouseX = e.pageX - this.offsetLeft;
   var mouseY = e.pageY - this.offsetTop;
 
   paint = true;
   addClick(e.pageX - this.offsetLeft, e.pageY - this.offsetTop);
   redraw();
-});
-$('#canvas').mousemove(function(e){
+} });
+$('#canvas').on({ 'mousemove touchmove' : function(e){
+  event.preventDefault();
   if(paint){
     addClick(e.pageX - this.offsetLeft, e.pageY - this.offsetTop, true);
     redraw();
   }
-});
-$('#canvas').mouseup(function(e){
+} });
+$('#canvas').on({ 'mouseup touchend' : function(e){
+  event.preventDefault();
   sendState();
   paint = false;
-});
-$('#canvas').mouseleave(function(e){
-  paint = false;
-});
+} });
+
 var clickX = new Array();
 var clickY = new Array();
 var clickDrag = new Array();
