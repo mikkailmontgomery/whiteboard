@@ -7,6 +7,7 @@
 </head>
 <body>
 <canvas id="canvas" width="600px" height="600px" style="border-style: solid;"></canvas>
+<button id="clear" onclick="clr();">Clear</button>
 <script>
 context = document.getElementById('canvas').getContext("2d");
 $('#canvas').on({ 'mouseleave touchcancel' : function(e){
@@ -79,6 +80,14 @@ clickY = msg.clickY;
 clickDrag = msg.clickDrag;
 redraw();
 });
+function clr(){
+  socket.emit('clear');
+  clickX = [];
+  clickY = [];
+  clickDrag = [];
+  redraw();
+}
+
 </script>
 </body>
 </html>

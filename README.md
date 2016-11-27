@@ -1,5 +1,7 @@
 # whiteboard
 Simply, minimal html5 multi-user whiteboard via node.js
+whiteboard.html based on tutorial at:
+http://www.williammalone.com/articles/create-html5-canvas-javascript-drawing-app/#demo-tools
 
 Steps to using solution(currently hardcoded to localhost).
 

@@ -18,13 +18,33 @@ io.on('connection', function(socket){
   clients.push(id)
   console.log(id + ' connected');
   socket.broadcast.emit('join', id)
+  var initmsg = {
+ clickX: clickX,
+ clickY: clickY,
+ clickDrag: clickDrag
+}
+  socket.emit('stateUpdateServer', initmsg)
     socket.on('disconnect', function(){
     console.log(id + ' disconnected');
   });
       socket.on('stateUpdate', function(msg){
       	msg.id = id
+        clickX = msg.clickX;
+        clickY = msg.clickY;
+        clickDrag = msg.clickDrag;
       	socket.broadcast.emit('stateUpdateServer', msg)
     console.log('message: ' + msg);
+  });
+        socket.on('clear', function(){
+          clickX = [];
+          clickY = [];
+          clickDrag = [];
+          var clrmsg = {
+         clickX: clickX,
+         clickY: clickY,
+         clickDrag: clickDrag
+        }
+        socket.broadcast.emit('stateUpdateServer', clrmsg)
   });
 });
 
